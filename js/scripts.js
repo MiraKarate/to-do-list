@@ -1,34 +1,39 @@
-<!DOCTYPE html>
-<html>
+//1. The user can add a new item to a list of items:
+function newItem () {
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>repl.it</title>
-	<link href="style.css" rel="stylesheet" type="text/css" />
-</head>
+    let li = $('<li></li>'); //stores each <li> element in a variable
+    let inputValue = $('#input').val(); //store the value into a variable you can use
+    li.append(inputValue);// append this value into another element such as the li 
 
-<body>
-	<div class="container">
-		<h2>To Do List App</h2>
-		<p><em> Double click to mark an item off, click on "X" to delete an item, and drag items to reorder.</em></p>
-       
-		<form name="toDoList">
-			<input type="text" name="ListItem" id="input"/>
-		</form>
+    if (inputValue === '') {
+        alert("You must write something!");
+    } else {
+        let list = $('#list');//assign the selected list to a variable
+        list.append(li); // append the li variable to the “list” variable
+    }
+
+    //2. The user can cross out an item from the list of items:
+    function crossOut() {
+		li.toggleClass("strike");
+	}
+
+    li.on("dblclick", function crossOut() {
+        li.toggleClass("strike");
+    });
+
+    //3 The user can delete an item from the list of items
+    // Adding the delete button "X": 
+    let crossOutButton = $('<crossOutButton></crossOutButton>');
+    crossOutButton.append(document.createTextNode("X"));
+    li.append(crossOutButton);
+
+    //Adding when click CLASS DELETE (DISPLAY: NONE) from the css:
+    crossOutButton.on("click", deleteListItem);
+
+    function deleteListItem () {
+        li.addClass("delete");
+    }
+    // 4. The user can change the order of items in the list of items:
+    $('#list').sortable();
+}
     
-		<div onclick="newItem()" id="button">Add</div>
-		<br/>
-		<ol id="list"></ol>
-  </div>
-  <script
-  src="https://code.jquery.com/jquery-3.5.1.js"
-  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous"></script>
-  <script
-  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-  crossorigin="anonymous"></script>
-  <script src="script.js"></script>
-  </body>
-</html>
