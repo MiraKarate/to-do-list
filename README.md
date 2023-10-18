@@ -21,3 +21,4 @@ The To Do List App is a simple web-based application that allows users to manage
 **JavaScript & jQuery:** Interactive functionalities are implemented using JavaScript and jQuery. These scripting languages allow users to perform actions like adding, marking, and deleting tasks, as well as reordering them.  
 
 
+<img width="456" alt="to-do-app" src="https://github.com/MiraKarate/to-do-list/assets/124045048/17c7340c-7d16-49f7-b8d9-31d622280626">
